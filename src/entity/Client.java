@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.Arrays;
 
 public class Client extends ClientFrame {
     public static void main(String[] args) {
@@ -30,7 +31,7 @@ public class Client extends ClientFrame {
 
             inputStream.close();
             outputStream.close();
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

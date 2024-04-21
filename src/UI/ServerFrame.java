@@ -3,9 +3,9 @@ package UI;
 import javax.swing.*;
 
 public class ServerFrame extends Frame {
-
-    protected static void setServerFrame() {
+    protected static void setFrame() {
         frame = new JFrame("Server");
-        setBaseFrame();
+
+        Frame.setFrame();
     }
 }

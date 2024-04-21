@@ -1,5 +1,6 @@
 import entity.Client;
 import entity.Server;
+import entity.Switcher;
 
 public class Start {
     public static void main(String[] args) {
@@ -10,7 +11,7 @@ public class Start {
         Client.main(args);
 
         // Switcher
-        // TODO();
+        Switcher.main(args);
 
         // NAT
         // TODO();
