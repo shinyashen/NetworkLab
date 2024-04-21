@@ -3,31 +3,50 @@ package entity;
 import UI.ClientFrame;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.Arrays;
 
 public class Client extends ClientFrame {
+    private static final String srcIP = "localhost";
+    private static final int srcPort = 25564;
     public static void main(String[] args) {
-        // Set Client UI
-        setClientFrame();
+        // 设置UI
+        setFrame();
 
-        // Client Send Data
+        // 发送数据
         sendData();
     }
 
-    private static void sendData() {
-        InputStream inputStream;
-        OutputStream outputStream;
+    public static String getSrcIP() {
+        return srcIP;
+    }
 
-        try (Socket clientSocket = new Socket("localhost", 25565)) {
-            outputStream = clientSocket.getOutputStream();
-            outputStream.write("Hello World".getBytes());
+    public static int getSrcPort() {
+        return srcPort;
+    }
+
+    private static void sendData() {
+        ObjectInputStream inputStream;
+        ObjectOutputStream outputStream;
+        int type=0;
+        int protocol=0;
+        String destIP="localhost";
+        int destPort=25565;
+        String testMessage="Hello World";
+        byte[] data=testMessage.getBytes();
+        Message srcMessage = new Message(type, protocol,destIP, getSrcIP(), destPort, getSrcPort(), data.length, data);
+
+        try (Socket clientSocket = new Socket(destIP, destPort)) {
+            outputStream = (ObjectOutputStream) clientSocket.getOutputStream();
+            outputStream.writeObject(srcMessage);
             outputStream.flush();
 
-            inputStream = clientSocket.getInputStream();
-            System.out.println(inputStream.toString());
+            inputStream = (ObjectInputStream) clientSocket.getInputStream();
+            Object object=inputStream.readObject();
+            Message destMessage = (Message) object;
+            System.out.println(Arrays.toString(destMessage.getData()));
 
             inputStream.close();
             outputStream.close();

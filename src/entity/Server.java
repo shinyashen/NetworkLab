@@ -5,11 +5,11 @@ import impl.ListenerImpl;
 
 public class Server extends ServerFrame {
     public static void main(String[] args) {
-        // Set Server UI
-        setServerFrame();
+        // 设置UI
+        setFrame();
 
-        // Create Listening Thread
-        Thread listening = new Thread(new Server());
+        // 创建监听线程
+        Thread listening = new Thread(new ListenerImpl());
         listening.start();
     }
 }
