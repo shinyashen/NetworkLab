@@ -5,7 +5,7 @@ import javax.swing.*;
 public class ClientFrame extends Frame {
     // Set Client Frame
     protected static void setFrame() {
-        frame.setTitle("Client");
+        frame = new JFrame("Client");
 
         Frame.setFrame();
     }

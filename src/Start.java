@@ -11,7 +11,7 @@ public class Start {
         Client.main(args);
 
         // Switcher
-        Switcher.main(args);
+        //Switcher.main(args);
 
         // NAT
         // TODO();

@@ -1,6 +1,8 @@
 package entity;
 
-public class Message {
+import java.io.Serializable;
+
+public class Message implements Serializable {
     private final int type; // 报文类型
     private final int protocol; // 协议
     private final String destIP; // 目的IP地址

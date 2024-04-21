@@ -24,7 +24,8 @@ public class HandlerImpl implements Runnable {
         try {
             // 获取客户端输入
             inputStream =  new ObjectInputStream(clientSocket.getInputStream());
-            Message inputMessage = (Message) inputStream.readObject();
+            Object object = inputStream.readObject();
+            Message inputMessage = (Message)object;
 
             // 数据处理
             dataHandling(inputMessage);

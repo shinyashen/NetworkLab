@@ -1,7 +1,7 @@
 package entity;
 
 import UI.ServerFrame;
-import impl.ListenerImpl;
+import impl.ServerListener;
 
 public class Server extends ServerFrame {
     public static void main(String[] args) {
@@ -9,7 +9,7 @@ public class Server extends ServerFrame {
         setFrame();
 
         // 创建监听线程
-        Thread listening = new Thread(new ListenerImpl());
+        Thread listening = new Thread(new ServerListener());
         listening.start();
     }
 }
