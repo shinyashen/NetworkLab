@@ -10,8 +10,6 @@ public abstract class ListenerImpl implements Runnable {
 
     @Override
     public void run() {
-        String clientAddress;
-
         try(ServerSocket serverSocket = new ServerSocket(7456)) {
             System.out.println("Server listening on port " + serverSocket.getLocalPort());
             serverSocket.setReuseAddress(true);
@@ -19,7 +17,7 @@ public abstract class ListenerImpl implements Runnable {
             while(true) {
                 try {
                     Socket clientSocket = serverSocket.accept();
-                    clientAddress = clientSocket.getRemoteSocketAddress().toString();
+                    String clientAddress = clientSocket.getRemoteSocketAddress().toString().substring(1);
                     System.out.println("Receiving request from: " + clientAddress);
 
                     // 创建线程
