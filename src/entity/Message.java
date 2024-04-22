@@ -23,45 +23,15 @@ public class Message implements Serializable {
         this.data = data;
     }
 
-    // get方法
-    public int getType() {
-        return type;
-    }
-
-    public int getProtocol() {
-        return protocol;
+    public byte[] getData() {
+        return data;
     }
 
     public String getDestIP() {
         return destIP;
     }
 
-    public String getSrcIp() {
-        return srcIP;
-    }
-
     public int getDestPort() {
         return destPort;
-    }
-
-    public int getSrcPort() {
-        return srcPort;
-    }
-
-    public int getLen() {
-        return len;
-    }
-
-    public byte[] getData() {
-        return data;
-    }
-
-    // set方法
-    public void setDestPort(int destPort) {
-        this.destPort = destPort;
-    }
-
-    public void setSrcPort(int srcPort) {
-        this.srcPort = srcPort;
     }
 }

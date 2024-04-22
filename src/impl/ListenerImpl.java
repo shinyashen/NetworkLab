@@ -5,10 +5,8 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ListenerImpl implements Runnable {
-    protected static void startHandling(Socket clientSocket) {
-
-    }
+public abstract class ListenerImpl implements Runnable {
+    protected abstract void startHandling(Socket clientSocket);
 
     @Override
     public void run() {

@@ -2,9 +2,9 @@ package impl;
 
 import java.net.Socket;
 
-public class ServerListener extends ListenerImpl {
+public class SwitcherListener extends ListenerImpl {
     protected void startHandling(Socket clientSocket) {
-        Thread handler = new Thread(new ServerHandler(clientSocket));
+        Thread handler = new Thread(new SwitcherHandler(clientSocket));
         handler.start();
     }
 

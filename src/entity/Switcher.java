@@ -1,15 +1,16 @@
 package entity;
 
 import UI.SwitcherFrame;
-import impl.ListenerImpl;
+import impl.SwitcherHandler;
+import impl.SwitcherListener;
 
 public class Switcher extends SwitcherFrame {
     public static void main(String[] args) {
-        // Create UI
+        // 设置UI
         setFrame();
 
-        // 创建
-        Thread listener = new Thread(new ListenerImpl());
+        // 创建监听线程
+        Thread listener = new Thread(new SwitcherListener());
         listener.start();
     }
 }

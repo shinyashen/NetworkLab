@@ -5,16 +5,14 @@ import entity.Message;
 import java.io.*;
 import java.net.Socket;
 
-public class HandlerImpl implements Runnable {
+public abstract class HandlerImpl implements Runnable {
     private final Socket clientSocket;
 
     public HandlerImpl(Socket clientSocket) {
         this.clientSocket = clientSocket;
     }
 
-    protected static void dataHandling(Message message) {
-        // 什么也不做
-    }
+    protected abstract void dataHandling(Message message);
 
     @Override
     public void run() {

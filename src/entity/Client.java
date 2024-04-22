@@ -1,6 +1,7 @@
 package entity;
 
 import UI.ClientFrame;
+import impl.SenderImpl;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -28,31 +29,17 @@ public class Client extends ClientFrame {
     }
 
     private static void sendData() {
-        ObjectInputStream inputStream;
-        ObjectOutputStream outputStream;
+        // 构造报文
         int type=0;
         int protocol=0;
         String destIP="localhost";
         int destPort=7456;
         String testMessage = "Hello World!";
         byte[] data=testMessage.getBytes();
-        Message srcMessage = new Message(type, protocol,destIP, getSrcIP(), destPort, getSrcPort(), data.length, data);
+        Message message = new Message(type, protocol,destIP, getSrcIP(), destPort, getSrcPort(), data.length, data);
 
-        try (Socket clientSocket = new Socket(destIP, destPort)) {
-            outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
-            outputStream.writeObject(srcMessage);
-            outputStream.flush();
-
-            inputStream = new ObjectInputStream(clientSocket.getInputStream());
-            Object object=inputStream.readObject();
-            Message destMessage = (Message) object;
-            String output=new String(destMessage.getData());
-            System.out.println(output);
-
-            inputStream.close();
-            outputStream.close();
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        // 发送报文
+        Thread sender = new Thread(new SenderImpl(message));
+        sender.start();
     }
 }

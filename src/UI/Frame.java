@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Frame {
     protected static JFrame frame;
 
-    // Set Basic Frame
+    // 设置共同初始窗口
     protected static void setFrame() {
         frame.setLocation(300, 300);
         frame.setSize(400, 300);
