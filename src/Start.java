@@ -1,4 +1,5 @@
 import entity.Client;
+import entity.NAT;
 import entity.Server;
 import entity.Switcher;
 
@@ -14,6 +15,6 @@ public class Start {
         Client.main(args);
 
         // NAT
-        // TODO();
+//        NAT.main(args);
     }
 }
