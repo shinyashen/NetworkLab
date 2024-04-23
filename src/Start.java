@@ -5,6 +5,7 @@ import entity.Switcher;
 
 public class Start {
     public static void main(String[] args) {
+
         // Servers
         Server.main(args);
 

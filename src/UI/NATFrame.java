@@ -7,6 +7,7 @@ public class NATFrame extends Frame {
     protected static void setFrame() {
         frame = new JFrame("NAT");
 
+        frame.setLocation(800, 700);
         Frame.setFrame();
     }
 }

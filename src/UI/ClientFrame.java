@@ -7,6 +7,7 @@ public class ClientFrame extends Frame {
     protected static void setFrame() {
         frame = new JFrame("Client");
 
+        frame.setLocation(600, 100);
         Frame.setFrame();
     }
 }

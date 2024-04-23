@@ -7,6 +7,7 @@ public class ServerFrame extends Frame {
     protected static void setFrame() {
         frame = new JFrame("Server");
 
+        frame.setLocation(100, 100);
         Frame.setFrame();
     }
 }

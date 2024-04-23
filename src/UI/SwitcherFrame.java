@@ -7,6 +7,7 @@ public class SwitcherFrame extends Frame {
     protected static void setFrame() {
         frame = new JFrame("Switcher");
 
+        frame.setLocation(100, 500);
         Frame.setFrame();
     }
 }
