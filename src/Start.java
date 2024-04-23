@@ -7,11 +7,11 @@ public class Start {
         // Servers
         Server.main(args);
 
+        // Switcher
+        Switcher.main(args);
+
         // Clients
         Client.main(args);
-
-        // Switcher
-        //Switcher.main(args);
 
         // NAT
         // TODO();

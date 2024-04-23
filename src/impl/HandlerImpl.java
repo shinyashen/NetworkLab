@@ -29,12 +29,12 @@ public abstract class HandlerImpl implements Runnable {
             dataHandling(inputMessage);
 
             // 设置服务端输出
-            outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
-            outputStream.writeObject(inputMessage);
+            // outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
+            // outputStream.writeObject(inputMessage);
 
             // 关闭IO流
             inputStream.close();
-            outputStream.close();
+            // outputStream.close();
 
             // 关闭Socket
             clientSocket.close();

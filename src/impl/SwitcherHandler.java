@@ -2,9 +2,6 @@ package impl;
 
 import entity.Message;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class SwitcherHandler extends HandlerImpl {
@@ -16,10 +13,12 @@ public class SwitcherHandler extends HandlerImpl {
         // 发送报文
         Thread sender = new Thread(new SenderImpl(message));
         sender.start();
+
+        System.out.println("Switcher Send: " + new String(message.getData()));
     }
 
     @Override
     public void run() {
-
+        super.run();
     }
 }

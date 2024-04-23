@@ -9,8 +9,9 @@ public class Server extends ServerFrame {
         setFrame();
 
         // 创建监听线程
-        Thread listening = new Thread(new ServerListener());
+        Thread listening = new Thread(new ServerListener(7457));
         listening.start();
+        System.out.println("Server listening on port 7457");
     }
 }
 

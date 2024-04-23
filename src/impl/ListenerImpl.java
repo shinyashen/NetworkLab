@@ -6,19 +6,22 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public abstract class ListenerImpl implements Runnable {
+    private final int port;
+
+    public ListenerImpl(int port) {
+        this.port = port;
+    }
+
     protected abstract void startHandling(Socket clientSocket);
 
     @Override
     public void run() {
-        try(ServerSocket serverSocket = new ServerSocket(7456)) {
-            System.out.println("Server listening on port " + serverSocket.getLocalPort());
+        try(ServerSocket serverSocket = new ServerSocket(port)) {
             serverSocket.setReuseAddress(true);
 
             while(true) {
                 try {
                     Socket clientSocket = serverSocket.accept();
-                    String clientAddress = clientSocket.getRemoteSocketAddress().toString().substring(1);
-                    System.out.println("Receiving request from: " + clientAddress);
 
                     // 创建线程
                     startHandling(clientSocket);
