@@ -6,16 +6,18 @@ import entity.Switcher;
 public class Start {
     public static void main(String[] args) {
 
-        // Servers
+        // 服务器
         Server.main(args);
 
-        // Switcher
+        // NAT
+        NAT.main(args);
+
+        // 交换机
         Switcher.main(args);
 
-        // Clients
+        // 客户端
         Client.main(args);
 
-        // NAT
-//        NAT.main(args);
+
     }
 }

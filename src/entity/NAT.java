@@ -9,8 +9,8 @@ public class NAT extends NATFrame {
         setFrame();
 
         // 创建监听线程
-        Thread listener = new Thread(new NATListener(7459));
+        Thread listener = new Thread(new NATListener(7452));
         listener.start();
-        System.out.println("NAT listening on port 7459");
+        System.out.println("NAT listening on port 7452");
     }
 }

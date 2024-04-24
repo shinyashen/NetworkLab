@@ -27,10 +27,6 @@ public class Message implements Serializable {
         return data;
     }
 
-    public String getDestIP() {
-        return destIP;
-    }
-
     public int getDestPort() {
         return destPort;
     }
