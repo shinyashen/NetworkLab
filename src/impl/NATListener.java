@@ -1,5 +1,7 @@
 package impl;
 
+import entity.Translator;
+
 import java.net.Socket;
 
 public class NATListener extends ListenerImpl {
@@ -9,7 +11,7 @@ public class NATListener extends ListenerImpl {
 
     protected void startHandling(Socket clientSocket) {
         String clientAddress = clientSocket.getRemoteSocketAddress().toString().substring(1);
-        System.out.println("NAT Receiving Message from: " + clientAddress);
+        System.out.println("NAT从" + clientAddress + "接收到了报文");
 
         Thread handler = new Thread(new NATHandler(clientSocket));
         handler.start();

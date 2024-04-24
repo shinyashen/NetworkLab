@@ -9,7 +9,7 @@ public class ServerListener extends ListenerImpl {
 
     protected void startHandling(Socket clientSocket) {
         String clientAddress = clientSocket.getRemoteSocketAddress().toString().substring(1);
-        System.out.println("Server Receiving Message from: " + clientAddress);
+        System.out.println("服务器从" + clientAddress + "接收到了报文");
 
         Thread handler = new Thread(new ServerHandler(clientSocket));
         handler.start();

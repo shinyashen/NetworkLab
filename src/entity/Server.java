@@ -11,7 +11,7 @@ public class Server extends ServerFrame {
         // 创建监听线程
         Thread listening = new Thread(new ServerListener(7453));
         listening.start();
-        System.out.println("Server listening on port 7453");
+        System.out.println("服务器监听端口为：7453");
     }
 }
 

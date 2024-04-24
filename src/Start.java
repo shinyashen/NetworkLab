@@ -17,7 +17,5 @@ public class Start {
 
         // 客户端
         Client.main(args);
-
-
     }
 }

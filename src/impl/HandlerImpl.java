@@ -12,7 +12,7 @@ public abstract class HandlerImpl implements Runnable {
         this.clientSocket = clientSocket;
     }
 
-    protected abstract void dataHandling(Message message);
+    protected abstract Message dataHandling(Message message);
 
     @Override
     public void run() {
@@ -20,21 +20,21 @@ public abstract class HandlerImpl implements Runnable {
         ObjectOutputStream outputStream;
 
         try {
-            // 获取客户端输入
+            // 获取发送方报文
             inputStream =  new ObjectInputStream(clientSocket.getInputStream());
             Object object = inputStream.readObject();
             Message inputMessage = (Message)object;
 
             // 数据处理
-            dataHandling(inputMessage);
+            Message outputMessage = dataHandling(inputMessage);
 
-            // 设置服务端输出
-            // outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
-            // outputStream.writeObject(inputMessage);
+            // 向发送方返回报文
+            outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
+            outputStream.writeObject(outputMessage);
 
             // 关闭IO流
             inputStream.close();
-            // outputStream.close();
+            outputStream.close();
 
             // 关闭Socket
             clientSocket.close();

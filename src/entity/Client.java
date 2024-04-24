@@ -1,40 +1,30 @@
 package entity;
 
 import UI.ClientFrame;
-import impl.SenderImpl;
+import impl.Sender;
 
 public class Client extends ClientFrame {
-    private static final String client_ip = "localhost";
-    private static final int client_port = 7450;
 
     public static void main(String[] args) {
         // 设置UI
         setFrame();
 
         // 发送数据
-        sendData();
+        sendData("10.0.0.1");
     }
 
-    public static String getIp() {
-        return client_ip;
-    }
-
-    public static int getPort() {
-        return client_port;
-    }
-
-    private static void sendData() {
+    private static void sendData(String src_ip) {
         // 构造报文
         int type = 0;
         int protocol = 0;
-        String destIP = "localhost";
-        int destPort = 7451;
-        String testMessage = "Hello World!";
-        byte[] data=testMessage.getBytes();
-        Message message = new Message(type, protocol,destIP, getIp(), destPort, getPort(), data.length, data);
+        String dest_ip = "200.5.3.1";
+        int dest_port = 80;
+        String testMessage = "你好服务器！";
+        byte[] data = testMessage.getBytes();
+        Message message = new Message(type, protocol, dest_ip, src_ip, dest_port, 8888, data.length, data);
 
-        // 发送报文
-        Thread sender = new Thread(new SenderImpl(message));
-        sender.start();
+        // 向最近的网关发送报文
+        Message recMessage = Sender.send(message, 7451);
+        System.out.println("客户端收到：" + new String(recMessage.getData()));
     }
 }

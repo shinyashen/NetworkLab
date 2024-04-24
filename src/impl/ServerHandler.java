@@ -8,8 +8,10 @@ public class ServerHandler extends HandlerImpl {
         super(clientSocket);
     }
 
-    protected void dataHandling(Message message) {
-        System.out.println("Server Send: "+new String(message.getData()));
+    protected Message dataHandling(Message message) {
+        Message serverMessage = new Message(1, message.getProtocol(), message.getSrcIp(), message.getDstIp(), message.getSrcPort(), message.getDstPort(), message.getLen(), ("收到：" + new String(message.getData())).getBytes());
+        System.out.println("服务器发送：" + new String(serverMessage.getData()));
+        return serverMessage;
     }
 
     @Override

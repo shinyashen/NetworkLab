@@ -9,7 +9,7 @@ public class SwitcherListener extends ListenerImpl {
 
     protected void startHandling(Socket clientSocket) {
         String clientAddress = clientSocket.getRemoteSocketAddress().toString().substring(1);
-        System.out.println("Switcher Receiving Message from: " + clientAddress);
+        System.out.println("交换机从" + clientAddress + "接收到了报文");
 
         Thread handler = new Thread(new SwitcherHandler(clientSocket));
         handler.start();

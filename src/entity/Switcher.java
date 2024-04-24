@@ -11,6 +11,6 @@ public class Switcher extends SwitcherFrame {
         // 创建监听线程
         Thread listener = new Thread(new SwitcherListener(7451));
         listener.start();
-        System.out.println("Switcher listening on port 7451");
+        System.out.println("交换机监听端口为：7451");
     }
 }
