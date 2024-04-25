@@ -1,15 +1,14 @@
 package impl;
 
-import entity.Entry;
-import entity.Message;
-import entity.NAT;
-import entity.Server;
+import entity.*;
+import ui.SwitcherFrame;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class NATHandler extends HandlerImpl {
+    public static final SwitcherFrame frame = Switcher.getFrame();
 
     public NATHandler(Socket clientSocket) {
         super(clientSocket);
@@ -24,6 +23,7 @@ public class NATHandler extends HandlerImpl {
             message.setSrcPort(entry.dst_port);
 
             // 发送报文
+            frame.appendInfo("NAT发送：" + new String(message.getData()));
             System.out.println("NAT发送：" + new String(message.getData()));
             Sender.send(message, Server.realPort);
         }
@@ -33,8 +33,7 @@ public class NATHandler extends HandlerImpl {
             message.setDstIP(entry.dst_ip);
             message.setDstPort(entry.dst_port);
 
-            //System.out.println(entry.dst_ip + " " + entry.dst_port + " " + entry.src_ip + " " + entry.src_port);
-
+            frame.appendInfo("NAT收到：" + new String(message.getData()));
             System.out.println("NAT收到：" + new String(message.getData()));
             try {
                 ObjectOutputStream outputStream = new ObjectOutputStream(entry.socket.getOutputStream());

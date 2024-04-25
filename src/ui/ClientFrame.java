@@ -15,25 +15,34 @@ public class ClientFrame extends JFrame {
 
     public void ClientWindowShow() {
         SwingUtilities.invokeLater(() -> {
-            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            setLocation(100, 100);
+            setDefaultCloseOperation(EXIT_ON_CLOSE);
             setVisible(true);
         });
     }
 
+    public int getProtocol() {
+        if(radioButton1.isSelected())
+            return 0;
+        else
+            return 1;
+    }
+
+    public String getData() {
+        return textField2.getText();
+    }
+
+    public void appendInfo(String info) {
+        textArea1.append(info + "\n");
+    }
+
     private void ClientSend(ActionEvent e) {
-        System.out.println("客户端窗口点击了发送按钮！");
-        if (Objects.requireNonNull(comboBox1.getSelectedItem()).toString().equals("A")) {
-            System.out.println("客户端将以A标识发送报文：");
+        if (Objects.requireNonNull(comboBox1.getSelectedItem()).toString().equals("A"))
             sendData(clientIP[0]);
-        }
-        else if (comboBox1.getSelectedItem().toString().equals("B")) {
-            System.out.println("客户端将以B标识发送报文：");
+        else if (Objects.requireNonNull(comboBox1.getSelectedItem()).toString().equals("B"))
             sendData(clientIP[1]);
-        }
-        else if (comboBox1.getSelectedItem().toString().equals("C")) {
-            System.out.println("客户端将以C标识发送报文：");
+        else if (Objects.requireNonNull(comboBox1.getSelectedItem()).toString().equals("C"))
             sendData(clientIP[2]);
-        }
     }
 
     private void ClientExit(ActionEvent e) {
@@ -54,6 +63,8 @@ public class ClientFrame extends JFrame {
         button2 = new JButton();
         scrollPane1 = new JScrollPane();
         textArea1 = new JTextArea();
+        radioButton1 = new JRadioButton();
+        radioButton2 = new JRadioButton();
 
         //======== this ========
         setTitle("\u5ba2\u6237\u7aef");
@@ -110,24 +121,43 @@ public class ClientFrame extends JFrame {
         button1.setText("\u53d1\u9001");
         button1.addActionListener(e -> ClientSend(e));
         contentPane.add(button1);
-        button1.setBounds(230, 20, 70, button1.getPreferredSize().height);
+        button1.setBounds(390, 20, 90, button1.getPreferredSize().height);
 
         //---- button2 ----
         button2.setText("\u5173\u95ed");
         button2.addActionListener(e -> ClientExit(e));
         contentPane.add(button2);
-        button2.setBounds(310, 20, 70, button2.getPreferredSize().height);
+        button2.setBounds(390, 60, 90, button2.getPreferredSize().height);
 
         //======== scrollPane1 ========
         {
+
+            //---- textArea1 ----
+            textArea1.setEditable(false);
             scrollPane1.setViewportView(textArea1);
         }
         contentPane.add(scrollPane1);
         scrollPane1.setBounds(25, 145, 350, 150);
 
-        contentPane.setPreferredSize(new Dimension(405, 350));
+        //---- radioButton1 ----
+        radioButton1.setText("TCP");
+        radioButton1.setSelected(true);
+        contentPane.add(radioButton1);
+        radioButton1.setBounds(new Rectangle(new Point(235, 25), radioButton1.getPreferredSize()));
+
+        //---- radioButton2 ----
+        radioButton2.setText("UDP");
+        contentPane.add(radioButton2);
+        radioButton2.setBounds(new Rectangle(new Point(315, 25), radioButton2.getPreferredSize()));
+
+        contentPane.setPreferredSize(new Dimension(500, 325));
         pack();
         setLocationRelativeTo(getOwner());
+
+        //---- buttonGroup1 ----
+        var buttonGroup1 = new ButtonGroup();
+        buttonGroup1.add(radioButton1);
+        buttonGroup1.add(radioButton2);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
     }
 
@@ -144,5 +174,7 @@ public class ClientFrame extends JFrame {
     private JButton button2;
     private JScrollPane scrollPane1;
     private JTextArea textArea1;
+    private JRadioButton radioButton1;
+    private JRadioButton radioButton2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
