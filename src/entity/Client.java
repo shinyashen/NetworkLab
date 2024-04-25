@@ -11,8 +11,8 @@ public class Client {
     public static final ClientFrame frame = new ClientFrame();
 
     public static void main(String[] args) {
-        // 设置窗口
-        frame.ClientWindowShow();
+        // 显示窗口
+        frame.showWindow(100, 100);
     }
 
     public static void sendData(String src_ip) {

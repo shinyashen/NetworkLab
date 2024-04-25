@@ -8,17 +8,9 @@ import javax.swing.*;
 import static entity.Client.clientIP;
 import static entity.Client.sendData;
 
-public class ClientFrame extends JFrame {
+public class ClientFrame extends Frame {
     public ClientFrame() {
-        initComponents();
-    }
-
-    public void ClientWindowShow() {
-        SwingUtilities.invokeLater(() -> {
-            setLocation(100, 100);
-            setDefaultCloseOperation(EXIT_ON_CLOSE);
-            setVisible(true);
-        });
+        super();
     }
 
     public int getProtocol() {
@@ -49,7 +41,7 @@ public class ClientFrame extends JFrame {
         // TODO add your code here
     }
 
-    private void initComponents() {
+    public void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         comboBox1 = new JComboBox<>();
         textField1 = new JTextField();
@@ -69,7 +61,6 @@ public class ClientFrame extends JFrame {
         //======== this ========
         setTitle("\u5ba2\u6237\u7aef");
         setResizable(false);
-        setFont(new Font("\u5fae\u8f6f\u96c5\u9ed1", Font.PLAIN, 12));
         var contentPane = getContentPane();
         contentPane.setLayout(null);
 
@@ -80,17 +71,17 @@ public class ClientFrame extends JFrame {
             "C"
         }));
         contentPane.add(comboBox1);
-        comboBox1.setBounds(120, 20, 100, comboBox1.getPreferredSize().height);
+        comboBox1.setBounds(105, 20, 100, comboBox1.getPreferredSize().height);
 
         //---- textField1 ----
         textField1.setText("127.0.0.1");
         contentPane.add(textField1);
-        textField1.setBounds(120, 60, 100, textField1.getPreferredSize().height);
+        textField1.setBounds(105, 65, 100, textField1.getPreferredSize().height);
 
         //---- textField2 ----
         textField2.setText("Hello World!");
         contentPane.add(textField2);
-        textField2.setBounds(120, 100, 260, textField2.getPreferredSize().height);
+        textField2.setBounds(105, 105, 260, textField2.getPreferredSize().height);
 
         //---- label1 ----
         label1.setText("\u672c\u8fdb\u7a0b\u6807\u8bc6");
@@ -98,7 +89,7 @@ public class ClientFrame extends JFrame {
         label1.setBounds(new Rectangle(new Point(25, 25), label1.getPreferredSize()));
 
         //---- label2 ----
-        label2.setText("\u4ea4\u6362\u673a\uff1aIP\u5730\u5740");
+        label2.setText("IP\u5730\u5740");
         contentPane.add(label2);
         label2.setBounds(new Rectangle(new Point(25, 65), label2.getPreferredSize()));
 
@@ -110,24 +101,24 @@ public class ClientFrame extends JFrame {
         //---- label4 ----
         label4.setText("\u7aef\u53e3\u53f7");
         contentPane.add(label4);
-        label4.setBounds(new Rectangle(new Point(230, 65), label4.getPreferredSize()));
+        label4.setBounds(new Rectangle(new Point(215, 65), label4.getPreferredSize()));
 
         //---- textField3 ----
         textField3.setText("10000");
         contentPane.add(textField3);
-        textField3.setBounds(280, 60, 100, textField3.getPreferredSize().height);
+        textField3.setBounds(265, 65, 100, textField3.getPreferredSize().height);
 
         //---- button1 ----
         button1.setText("\u53d1\u9001");
         button1.addActionListener(e -> ClientSend(e));
         contentPane.add(button1);
-        button1.setBounds(390, 20, 90, button1.getPreferredSize().height);
+        button1.setBounds(375, 20, 90, button1.getPreferredSize().height);
 
         //---- button2 ----
         button2.setText("\u5173\u95ed");
         button2.addActionListener(e -> ClientExit(e));
         contentPane.add(button2);
-        button2.setBounds(390, 60, 90, button2.getPreferredSize().height);
+        button2.setBounds(375, 60, 90, button2.getPreferredSize().height);
 
         //======== scrollPane1 ========
         {
@@ -137,20 +128,20 @@ public class ClientFrame extends JFrame {
             scrollPane1.setViewportView(textArea1);
         }
         contentPane.add(scrollPane1);
-        scrollPane1.setBounds(25, 145, 350, 150);
+        scrollPane1.setBounds(25, 145, 340, 150);
 
         //---- radioButton1 ----
         radioButton1.setText("TCP");
         radioButton1.setSelected(true);
         contentPane.add(radioButton1);
-        radioButton1.setBounds(new Rectangle(new Point(235, 25), radioButton1.getPreferredSize()));
+        radioButton1.setBounds(new Rectangle(new Point(220, 20), radioButton1.getPreferredSize()));
 
         //---- radioButton2 ----
         radioButton2.setText("UDP");
         contentPane.add(radioButton2);
-        radioButton2.setBounds(new Rectangle(new Point(315, 25), radioButton2.getPreferredSize()));
+        radioButton2.setBounds(new Rectangle(new Point(300, 20), radioButton2.getPreferredSize()));
 
-        contentPane.setPreferredSize(new Dimension(500, 325));
+        contentPane.setPreferredSize(new Dimension(485, 325));
         pack();
         setLocationRelativeTo(getOwner());
 

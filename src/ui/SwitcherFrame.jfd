@@ -8,9 +8,10 @@ new FormModel {
 		} ) {
 			name: "this"
 			"title": "交换机"
+			"resizable": false
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
-				"text": "NAT网关：IP地址"
+				"text": "IP地址"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 25
 				"y": 25
@@ -19,30 +20,30 @@ new FormModel {
 				name: "textField1"
 				"text": "127.0.0.1"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 135
-				"y": 20
+				"x": 70
+				"y": 25
 				"width": 100
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label2"
 				"text": "端口号"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 245
+				"x": 200
 				"y": 25
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "textField2"
 				"text": "10001"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 290
-				"y": 20
+				"x": 245
+				"y": 25
 				"width": 100
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button1"
 				"text": "开始工作"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 400
+				"x": 355
 				"y": 20
 				"width": 90
 			} )
@@ -54,20 +55,20 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 25
 				"y": 65
-				"width": 360
+				"width": 320
 				"height": 195
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button2"
 				"text": "关闭"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 400
+				"x": 355
 				"y": 60
 				"width": 90
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 515, 290 )
+			"size": new java.awt.Dimension( 470, 290 )
 		} )
 	}
 }

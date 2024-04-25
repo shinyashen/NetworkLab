@@ -1,5 +1,6 @@
 package entity;
 
+import ui.ClientFrame;
 import ui.NATFrame;
 import impl.NATListener;
 import impl.Scanner;
@@ -9,10 +10,11 @@ public class NAT extends NATFrame {
     public static final String E0_IP = "10.0.0.100";
     public static final String E1_IP = "128.10.10.1";
     public static final int port = 7452;
+    public static final NATFrame frame = new NATFrame();
 
     public static void main(String[] args) {
-        // 设置UI
-        setFrame();
+        // 显示窗口
+        frame.showWindow(100, 500);
 
         // 创建监听线程
         Thread listener = new Thread(new NATListener(port));

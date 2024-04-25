@@ -14,8 +14,8 @@ public class Server extends ServerFrame {
     }
 
     public static void main(String[] args) {
-        // 设置窗口
-        frame.ServerWindowShow();
+        // 显示窗口
+        frame.showWindow(700, 500);
 
         // 创建监听线程
         Thread listening = new Thread(new ServerListener(realPort));

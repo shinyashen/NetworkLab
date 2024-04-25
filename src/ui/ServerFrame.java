@@ -3,24 +3,16 @@ package ui;
 import java.awt.*;
 import javax.swing.*;
 
-public class ServerFrame extends JFrame {
+public class ServerFrame extends Frame {
     public ServerFrame() {
-        initComponents();
-    }
-
-    public void ServerWindowShow() {
-        SwingUtilities.invokeLater(() -> {
-            setLocation(700, 500);
-            setDefaultCloseOperation(EXIT_ON_CLOSE);
-            setVisible(true);
-        });
+        super();
     }
 
     public void appendInfo(String info) {
         textArea1.append(info + "\n");
     }
 
-    private void initComponents() {
+    public void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         label1 = new JLabel();
         textField1 = new JTextField();
@@ -33,47 +25,48 @@ public class ServerFrame extends JFrame {
 
         //======== this ========
         setTitle("\u670d\u52a1\u5668");
+        setResizable(false);
         var contentPane = getContentPane();
         contentPane.setLayout(null);
 
         //---- label1 ----
-        label1.setText("\u670d\u52a1\u5668\uff1aIP\u5730\u5740");
+        label1.setText("IP\u5730\u5740");
         contentPane.add(label1);
         label1.setBounds(new Rectangle(new Point(25, 25), label1.getPreferredSize()));
 
         //---- textField1 ----
         textField1.setText("200.5.3.1");
         contentPane.add(textField1);
-        textField1.setBounds(120, 20, 100, textField1.getPreferredSize().height);
+        textField1.setBounds(70, 25, 100, textField1.getPreferredSize().height);
 
         //---- label2 ----
         label2.setText("\u7aef\u53e3\u53f7");
         contentPane.add(label2);
-        label2.setBounds(new Rectangle(new Point(245, 25), label2.getPreferredSize()));
+        label2.setBounds(new Rectangle(new Point(200, 25), label2.getPreferredSize()));
 
         //---- textField2 ----
         textField2.setText("80");
         contentPane.add(textField2);
-        textField2.setBounds(290, 20, 100, textField2.getPreferredSize().height);
+        textField2.setBounds(245, 25, 100, textField2.getPreferredSize().height);
 
         //---- button1 ----
         button1.setText("\u5f00\u59cb\u5de5\u4f5c");
         contentPane.add(button1);
-        button1.setBounds(400, 20, 90, button1.getPreferredSize().height);
+        button1.setBounds(355, 20, 90, button1.getPreferredSize().height);
 
         //======== scrollPane1 ========
         {
             scrollPane1.setViewportView(textArea1);
         }
         contentPane.add(scrollPane1);
-        scrollPane1.setBounds(25, 65, 360, 195);
+        scrollPane1.setBounds(25, 65, 320, 195);
 
         //---- button2 ----
         button2.setText("\u5173\u95ed");
         contentPane.add(button2);
-        button2.setBounds(400, 60, 90, button2.getPreferredSize().height);
+        button2.setBounds(355, 60, 90, button2.getPreferredSize().height);
 
-        contentPane.setPreferredSize(new Dimension(515, 290));
+        contentPane.setPreferredSize(new Dimension(470, 290));
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
