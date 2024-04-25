@@ -1,6 +1,6 @@
 package entity;
 
-import UI.SwitcherFrame;
+import ui.SwitcherFrame;
 import impl.SwitcherListener;
 
 public class Switcher extends SwitcherFrame {

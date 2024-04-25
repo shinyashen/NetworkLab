@@ -1,21 +1,19 @@
 package entity;
 
-import UI.ClientFrame;
+import ui.ClientFrame;
 import impl.Sender;
 
-public class Client extends ClientFrame {
+public class Client {
     public static final String[] clientIP = {"10.0.0.1", "10.0.0.2", "10.0.0.3"};
     public static final int port = 8888;
+    public static final ClientFrame frame = new ClientFrame();
 
     public static void main(String[] args) {
-        // 设置UI
-        setFrame();
-
-        // 发送数据
-        sendData(clientIP[0]);
+        // 设置窗口
+        frame.ClientWindowShow();
     }
 
-    private static void sendData(String src_ip) {
+    public static void sendData(String src_ip) {
         // 构造报文
         int protocol = 0;
         String dest_ip = Server.IP;

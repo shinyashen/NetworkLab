@@ -1,6 +1,6 @@
 package entity;
 
-import UI.NATFrame;
+import ui.NATFrame;
 import impl.NATListener;
 import impl.Scanner;
 

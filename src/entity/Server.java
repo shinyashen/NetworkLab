@@ -1,6 +1,6 @@
 package entity;
 
-import UI.ServerFrame;
+import ui.ServerFrame;
 import impl.ServerListener;
 
 public class Server extends ServerFrame {
