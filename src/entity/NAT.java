@@ -1,9 +1,8 @@
 package entity;
 
-import ui.ClientFrame;
-import ui.NATFrame;
 import impl.NATListener;
 import impl.Scanner;
+import ui.NATFrame;
 
 public class NAT extends NATFrame {
     public static Translator table = new Translator(); // 转换表

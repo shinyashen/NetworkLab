@@ -1,7 +1,5 @@
 package impl;
 
-import entity.Translator;
-
 import java.net.Socket;
 
 public class NATListener extends ListenerImpl {

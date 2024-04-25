@@ -1,9 +1,9 @@
 package ui;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.Objects;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.Objects;
 
 import static entity.Client.clientIP;
 import static entity.Client.sendData;

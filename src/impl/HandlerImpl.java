@@ -2,7 +2,9 @@ package impl;
 
 import entity.Message;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public abstract class HandlerImpl implements Runnable {
