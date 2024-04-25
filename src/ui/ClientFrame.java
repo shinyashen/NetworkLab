@@ -2,6 +2,7 @@ package ui;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 import javax.swing.*;
 
 import static entity.Client.clientIP;
@@ -21,7 +22,7 @@ public class ClientFrame extends JFrame {
 
     private void ClientSend(ActionEvent e) {
         System.out.println("客户端窗口点击了发送按钮！");
-        if (comboBox1.getSelectedItem().toString().equals("A")) {
+        if (Objects.requireNonNull(comboBox1.getSelectedItem()).toString().equals("A")) {
             System.out.println("客户端将以A标识发送报文：");
             sendData(clientIP[0]);
         }

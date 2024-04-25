@@ -21,6 +21,7 @@ public class Client {
         String testMessage = "你好服务器！";
         byte[] data = testMessage.getBytes();
         Message message = new Message(0, protocol, dest_ip, src_ip, dest_port, port, data.length, data);
+        //System.out.println(message.getSrcIp());
 
         // 向最近的网关发送报文
         Message recMessage = Sender.send(message, Switcher.port);

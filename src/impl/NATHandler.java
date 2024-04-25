@@ -29,9 +29,11 @@ public class NATHandler extends HandlerImpl {
         }
         else {
             // 处理应答分组报文
-            Entry entry = NAT.table.searchAnswer(message.getDstIp(), message.getProtocol());
+            Entry entry = NAT.table.searchAnswer(message.getDstIp(), message.getDstPort(), message.getProtocol());
             message.setDstIP(entry.dst_ip);
             message.setDstPort(entry.dst_port);
+
+            //System.out.println(entry.dst_ip + " " + entry.dst_port + " " + entry.src_ip + " " + entry.src_port);
 
             System.out.println("NAT收到：" + new String(message.getData()));
             try {
