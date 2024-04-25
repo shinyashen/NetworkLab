@@ -1,6 +1,7 @@
 package impl;
 
 import entity.Message;
+import entity.NAT;
 
 import java.net.Socket;
 
@@ -14,7 +15,7 @@ public class SwitcherHandler extends HandlerImpl {
         System.out.println("交换机发送：" + new String(message.getData()));
 
         // 将收到的报文发送回主机
-        Message recMessage = Sender.send(message, 7452);
+        Message recMessage = Sender.send(message, NAT.port);
         System.out.println("交换机收到：" + new String(recMessage.getData()));
         return recMessage;
     }

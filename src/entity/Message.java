@@ -66,4 +66,8 @@ public class Message implements Serializable {
     public void setDstPort(int dst_port) {
         this.dst_port = dst_port;
     }
+
+    public int getType() {
+        return type;
+    }
 }

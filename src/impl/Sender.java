@@ -26,6 +26,7 @@ public class Sender {
             outputStream.close();
 
             return destMessage;
+
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

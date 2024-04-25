@@ -6,7 +6,7 @@ import java.io.*;
 import java.net.Socket;
 
 public abstract class HandlerImpl implements Runnable {
-    private final Socket clientSocket;
+    protected final Socket clientSocket;
 
     public HandlerImpl(Socket clientSocket) {
         this.clientSocket = clientSocket;
@@ -29,15 +29,18 @@ public abstract class HandlerImpl implements Runnable {
             Message outputMessage = dataHandling(inputMessage);
 
             // 向发送方返回报文
-            outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
-            outputStream.writeObject(outputMessage);
+            if (!clientSocket.isClosed()) {
+                outputStream = new ObjectOutputStream(clientSocket.getOutputStream());
+                outputStream.writeObject(outputMessage);
+                outputStream.close();
+            }
 
             // 关闭IO流
             inputStream.close();
-            outputStream.close();
 
             // 关闭Socket
             clientSocket.close();
+
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
