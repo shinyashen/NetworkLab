@@ -1,7 +1,7 @@
 package ui;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
 public class SwitcherFrame extends Frame {
     public SwitcherFrame() {

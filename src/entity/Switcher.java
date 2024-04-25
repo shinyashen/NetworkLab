@@ -1,9 +1,9 @@
 package entity;
 
-import ui.SwitcherFrame;
 import impl.SwitcherListener;
+import ui.SwitcherFrame;
 
-public class Switcher extends SwitcherFrame {
+public class Switcher {
     public static final int port = 7451;
     public static final SwitcherFrame frame = new SwitcherFrame();
 

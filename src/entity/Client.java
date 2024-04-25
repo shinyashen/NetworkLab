@@ -1,7 +1,7 @@
 package entity;
 
-import ui.ClientFrame;
 import impl.Sender;
+import ui.ClientFrame;
 
 import java.util.Objects;
 

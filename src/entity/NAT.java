@@ -1,11 +1,10 @@
 package entity;
 
-import ui.ClientFrame;
-import ui.NATFrame;
 import impl.NATListener;
 import impl.Scanner;
+import ui.NATFrame;
 
-public class NAT extends NATFrame {
+public class NAT {
     public static Translator table = new Translator(); // 转换表
     public static final String E0_IP = "10.0.0.100";
     public static final String E1_IP = "128.10.10.1";

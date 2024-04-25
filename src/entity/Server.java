@@ -1,9 +1,9 @@
 package entity;
 
-import ui.ServerFrame;
 import impl.ServerListener;
+import ui.ServerFrame;
 
-public class Server extends ServerFrame {
+public class Server {
     public static final String IP = "200.5.3.1";
     public static final int fakePort = 80;
     public static final int realPort = 7453;
