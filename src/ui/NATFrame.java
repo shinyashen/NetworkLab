@@ -65,9 +65,9 @@ public class NATFrame extends Frame {
         for(String str:column)
             tableModel.addColumn(str);
         setFixedColumnWidth(table1, "协议", 70);
-        setFixedColumnWidth(table1, "内网IP", 123);
+        setFixedColumnWidth(table1, "内网IP", 116);
         setFixedColumnWidth(table1, "内网端口", 70);
-        setFixedColumnWidth(table1, "公网IP", 123);
+        setFixedColumnWidth(table1, "公网IP", 116);
         setFixedColumnWidth(table1, "公网端口", 70);
         setFixedColumnWidth(table1, "剩余时间", 70);
         scrollPane2 = new JScrollPane();
@@ -105,6 +105,8 @@ public class NATFrame extends Frame {
 
         //======== scrollPane1 ========
         {
+            scrollPane1.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+            scrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
             //---- table1 ----
             table1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

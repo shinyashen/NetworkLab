@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Scanner implements Runnable {
     public static final NATFrame frame = NAT.frame;
-    public static int liveSeconds = 10;
+    public static int liveSeconds = 120;
 
     @Override
     public void run() {
