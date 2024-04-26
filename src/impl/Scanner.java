@@ -4,20 +4,23 @@ import entity.NAT;
 import ui.NATFrame;
 
 import java.util.Objects;
+import java.util.Vector;
+import java.util.stream.Collectors;
 
 public class Scanner implements Runnable {
     public static final NATFrame frame = NAT.frame;
-    public static int liveSeconds = 120;
+    public static long liveMilliSeconds = 10 * 1000;
 
     @Override
     public void run() {
-
         while (true) {
             try {
-                if (!NAT.table.table.isEmpty())
-                    NAT.table.table.stream().filter(e -> System.currentTimeMillis() - Objects.requireNonNull(e.liveTime) >= liveSeconds * 1000).forEach(e -> NAT.table.delEntry(e));
+                if (!NAT.translator.table.isEmpty())
+                    NAT.translator.table.removeAll(NAT.translator.table.stream().filter(Objects::nonNull).filter(e -> System.currentTimeMillis() - e.liveTime >= liveMilliSeconds).
+                            collect(Collectors.toCollection(Vector::new)));
                 frame.updateTable();
-                Thread.sleep(100);
+                //System.out.println(NAT.translator.table.size());
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

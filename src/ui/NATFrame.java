@@ -17,11 +17,12 @@ public class NATFrame extends Frame {
     }
 
     public void updateTable() {
-        Vector<Entry> table = NAT.table.table;
+        Vector<Entry> table = NAT.translator.table;
         DefaultTableModel tableModel = (DefaultTableModel) table1.getModel();
-        tableModel.getDataVector().clear();
+        tableModel.getDataVector().removeAllElements();
+
         for (Entry e : table) {
-            String arr[] = new String[6];
+            String[] arr = new String[6];
             if (e.protocol == 0)
                 arr[0] = "TCP";
             else
@@ -30,7 +31,7 @@ public class NATFrame extends Frame {
             arr[2] = e.src_port + "";
             arr[3] = e.dst_ip;
             arr[4] = e.dst_port + "";
-            arr[5] = Scanner.liveSeconds - (System.currentTimeMillis() - e.liveTime) / 1000 + "s";
+            arr[5] = (Scanner.liveMilliSeconds - System.currentTimeMillis() + e.liveTime) / 1000 + "s";
             tableModel.addRow(arr);
         }
     }
@@ -61,7 +62,7 @@ public class NATFrame extends Frame {
         table1 = new JTable();
         table1.getTableHeader().setReorderingAllowed(false);
         DefaultTableModel tableModel = (DefaultTableModel) table1.getModel();
-        String column[]={"协议","内网IP","内网端口","公网IP","公网端口","剩余时间"};
+        String[] column={"协议","内网IP","内网端口","公网IP","公网端口","剩余时间"};
         for(String str:column)
             tableModel.addColumn(str);
         setFixedColumnWidth(table1, "协议", 70);

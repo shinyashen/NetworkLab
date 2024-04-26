@@ -18,7 +18,7 @@ public class NATHandler extends HandlerImpl {
 
         if (message.getType() == 0) {
             // 处理请求分组报文
-            Entry entry = NAT.table.searchRequest(message.getSrcIp(), message.getProtocol(), clientSocket);
+            Entry entry = NAT.translator.searchRequest(message.getSrcIp(), message.getProtocol(), clientSocket);
             message.setSrcIP(entry.dst_ip);
             message.setSrcPort(entry.dst_port);
 
@@ -29,7 +29,7 @@ public class NATHandler extends HandlerImpl {
         }
         else {
             // 处理应答分组报文
-            Entry entry = NAT.table.searchAnswer(message.getDstIp(), message.getDstPort(), message.getProtocol());
+            Entry entry = NAT.translator.searchAnswer(message.getDstIp(), message.getDstPort(), message.getProtocol());
             message.setDstIP(entry.dst_ip);
             message.setDstPort(entry.dst_port);
 

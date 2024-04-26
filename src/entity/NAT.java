@@ -3,10 +3,9 @@ package entity;
 import impl.NATListener;
 import impl.Scanner;
 import ui.NATFrame;
-import ui.ServerFrame;
 
 public class NAT {
-    public static Translator table = new Translator(); // 转换表
+    public static Translator translator = new Translator(); // 转换表
     public static final String E0_IP = "10.0.0.100";
     public static final String E1_IP = "128.10.10.1";
     public static final int port = 7452;
