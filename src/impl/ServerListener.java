@@ -6,7 +6,7 @@ import ui.ServerFrame;
 import java.net.Socket;
 
 public class ServerListener extends ListenerImpl {
-    public static final ServerFrame frame = Server.getFrame();
+    public static final ServerFrame frame = Server.frame;
     public ServerListener(int port) {
         super(port);
     }

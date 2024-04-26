@@ -9,10 +9,6 @@ public class Server {
     public static final int realPort = 7453;
     public static final ServerFrame frame = new ServerFrame();
 
-    public static ServerFrame getFrame() {
-        return frame;
-    }
-
     public static void main(String[] args) {
         // 显示窗口
         frame.showWindow(700, 500);

@@ -8,7 +8,7 @@ import ui.ServerFrame;
 import java.net.Socket;
 
 public class ServerHandler extends HandlerImpl {
-    public static final ServerFrame frame = Server.getFrame();
+    public static final ServerFrame frame = Server.frame;
     public ServerHandler(Socket clientSocket) {
         super(clientSocket);
     }

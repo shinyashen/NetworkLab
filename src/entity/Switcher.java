@@ -7,10 +7,6 @@ public class Switcher {
     public static final int port = 7451;
     public static final SwitcherFrame frame = new SwitcherFrame();
 
-    public static SwitcherFrame getFrame() {
-        return frame;
-    }
-
     public static void main(String[] args) {
         // 显示窗口
         frame.showWindow(700, 100);

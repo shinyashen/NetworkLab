@@ -58,12 +58,15 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JTable" ) {
 					name: "table1"
 					"autoResizeMode": 0
+					auxiliary() {
+						"JavaCodeGenerator.postCreateCode": "table1.getTableHeader().setReorderingAllowed(false);\nDefaultTableModel tableModel = (DefaultTableModel) table1.getModel();\nString column[]={\"协议\",\"内网IP\",\"内网端口\",\"公网IP\",\"公网端口\",\"剩余时间\"};\nfor(String str:column)\n\ttableModel.addColumn(str);\nsetFixedColumnWidth(table1, \"协议\", 70);\nsetFixedColumnWidth(table1, \"内网IP\", 123);\nsetFixedColumnWidth(table1, \"内网端口\", 70);\nsetFixedColumnWidth(table1, \"公网IP\", 123);\nsetFixedColumnWidth(table1, \"公网端口\", 70);\nsetFixedColumnWidth(table1, \"剩余时间\", 70);"
+					}
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 25
 				"y": 55
 				"height": 85
-				"width": 525
+				"width": 530
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane2"
@@ -74,12 +77,12 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 25
 				"y": 155
-				"width": 525
-				"height": 50
+				"width": 530
+				"height": 150
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 585, 300 )
+			"size": new java.awt.Dimension( 580, 335 )
 		} )
 	}
 }

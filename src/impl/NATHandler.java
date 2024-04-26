@@ -1,14 +1,14 @@
 package impl;
 
 import entity.*;
-import ui.SwitcherFrame;
+import ui.NATFrame;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 public class NATHandler extends HandlerImpl {
-    public static final SwitcherFrame frame = Switcher.getFrame();
+    public static final NATFrame frame = NAT.frame;
 
     public NATHandler(Socket clientSocket) {
         super(clientSocket);

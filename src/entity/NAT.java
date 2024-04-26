@@ -3,6 +3,7 @@ package entity;
 import impl.NATListener;
 import impl.Scanner;
 import ui.NATFrame;
+import ui.ServerFrame;
 
 public class NAT {
     public static Translator table = new Translator(); // 转换表

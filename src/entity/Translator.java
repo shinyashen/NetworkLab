@@ -1,10 +1,10 @@
 package entity;
 
 import java.net.Socket;
-import java.util.ArrayList;
+import java.util.Vector;
 
 public class Translator {
-    public ArrayList<Entry> table = new ArrayList<>();
+    public static Vector<Entry> table = new Vector<>();
     int portNum = 0;
 
     public Entry searchRequest(String src_ip, int protocol, Socket socket) {
