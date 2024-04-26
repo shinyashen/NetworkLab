@@ -27,7 +27,7 @@ public class Client {
         // 向最近的网关发送报文
         frame.appendInfo(message.fromWhere() + "向服务器请求报文：" + testMessage);
         Message recMessage = Sender.send(message, Switcher.port);
-        frame.appendInfo(message.fromWhere() + "收到：" + new String(recMessage.getData()));
+        frame.appendInfo(message.fromWhere() + "收到服务器应答报文：" + new String(recMessage.getData()));
         System.out.println("客户端收到：" + new String(recMessage.getData()));
     }
 }
