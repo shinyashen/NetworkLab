@@ -16,12 +16,14 @@ public class SwitcherHandler extends HandlerImpl {
 
     protected Message dataHandling(Message message) {
         // 向NAT发送报文
+        frame.appendInfo("交换机收到：" + message.fromWhere() + "向服务器发送的请求分组");
         frame.appendInfo("交换机发送：" + new String(message.getData()));
         System.out.println("交换机发送：" + new String(message.getData()));
 
         // 将收到的报文发送回主机
         Message recMessage = Sender.send(message, NAT.port);
-        frame.appendInfo("交换机收到：" + new String(recMessage.getData()));
+        frame.appendInfo("交换机收到：服务器进程向" + message.fromWhere() + "发送的应答分组");
+        frame.appendInfo("交换机收到并发送：" + new String(recMessage.getData()));
         System.out.println("交换机收到：" + new String(recMessage.getData()));
         return recMessage;
     }

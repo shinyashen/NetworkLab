@@ -2,6 +2,9 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+
+import static java.lang.System.exit;
 
 public class SwitcherFrame extends Frame {
     public SwitcherFrame() {
@@ -10,6 +13,10 @@ public class SwitcherFrame extends Frame {
 
     public void appendInfo(String info) {
         textArea1.append(info + "\n");
+    }
+
+    private void SwitcherExit(ActionEvent e) {
+        exit(0);
     }
 
     public void initComponents() {
@@ -35,7 +42,7 @@ public class SwitcherFrame extends Frame {
         label1.setBounds(new Rectangle(new Point(25, 25), label1.getPreferredSize()));
 
         //---- textField1 ----
-        textField1.setText("127.0.0.1");
+        textField1.setText("10.0.0.100");
         contentPane.add(textField1);
         textField1.setBounds(70, 25, 100, textField1.getPreferredSize().height);
 
@@ -63,6 +70,7 @@ public class SwitcherFrame extends Frame {
 
         //---- button2 ----
         button2.setText("\u5173\u95ed");
+        button2.addActionListener(e -> SwitcherExit(e));
         contentPane.add(button2);
         button2.setBounds(355, 60, 90, button2.getPreferredSize().height);
 

@@ -4,10 +4,10 @@ import impl.ServerListener;
 import ui.ServerFrame;
 
 public class Server {
-    public static final String IP = "200.5.3.1";
-    public static final int fakePort = 80;
-    public static final int realPort = 7453;
     public static final ServerFrame frame = new ServerFrame();
+    public static final String IP = frame.getIP();
+    public static int fakePort = frame.getPort();
+    public static final int realPort = 7453;
 
     public static void main(String[] args) {
         // 显示窗口

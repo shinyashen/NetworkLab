@@ -3,10 +3,11 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
 import java.util.Objects;
 
-import static entity.Client.clientIP;
 import static entity.Client.sendData;
+import static java.lang.System.exit;
 
 public class ClientFrame extends Frame {
     public ClientFrame() {
@@ -14,10 +15,11 @@ public class ClientFrame extends Frame {
     }
 
     public int getProtocol() {
-        if(radioButton1.isSelected())
-            return 0;
-        else
-            return 1;
+        return (radioButton1.isSelected()) ? 0 : 1;
+    }
+
+    public int getPort() {
+        return Integer.parseInt(textField3.getText());
     }
 
     public String getData() {
@@ -29,16 +31,20 @@ public class ClientFrame extends Frame {
     }
 
     private void ClientSend(ActionEvent e) {
-        if (Objects.requireNonNull(comboBox1.getSelectedItem()).toString().equals("A"))
-            sendData(clientIP[0]);
-        else if (Objects.requireNonNull(comboBox1.getSelectedItem()).toString().equals("B"))
-            sendData(clientIP[1]);
-        else if (Objects.requireNonNull(comboBox1.getSelectedItem()).toString().equals("C"))
-            sendData(clientIP[2]);
+        sendData(textField1.getText());
     }
 
     private void ClientExit(ActionEvent e) {
-        // TODO add your code here
+        exit(0);
+    }
+
+    private void comboBox1ItemStateChanged(ItemEvent e) {
+        if (Objects.requireNonNull(comboBox1.getSelectedItem()).toString().equals("A"))
+            textField1.setText("10.0.0.1");
+        else if (Objects.requireNonNull(comboBox1.getSelectedItem()).toString().equals("B"))
+            textField1.setText("10.0.0.2");
+        else if (Objects.requireNonNull(comboBox1.getSelectedItem()).toString().equals("C"))
+            textField1.setText("10.0.0.3");
     }
 
     public void initComponents() {
@@ -70,11 +76,12 @@ public class ClientFrame extends Frame {
             "B",
             "C"
         }));
+        comboBox1.addItemListener(e -> comboBox1ItemStateChanged(e));
         contentPane.add(comboBox1);
         comboBox1.setBounds(105, 20, 100, comboBox1.getPreferredSize().height);
 
         //---- textField1 ----
-        textField1.setText("127.0.0.1");
+        textField1.setText("10.0.0.1");
         contentPane.add(textField1);
         textField1.setBounds(105, 65, 100, textField1.getPreferredSize().height);
 
@@ -104,7 +111,7 @@ public class ClientFrame extends Frame {
         label4.setBounds(new Rectangle(new Point(215, 65), label4.getPreferredSize()));
 
         //---- textField3 ----
-        textField3.setText("10000");
+        textField3.setText("8888");
         contentPane.add(textField3);
         textField3.setBounds(265, 65, 100, textField3.getPreferredSize().height);
 
@@ -141,7 +148,7 @@ public class ClientFrame extends Frame {
         contentPane.add(radioButton2);
         radioButton2.setBounds(new Rectangle(new Point(300, 20), radioButton2.getPreferredSize()));
 
-        contentPane.setPreferredSize(new Dimension(485, 325));
+        contentPane.setPreferredSize(new Dimension(490, 325));
         pack();
         setLocationRelativeTo(getOwner());
 

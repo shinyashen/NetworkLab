@@ -6,10 +6,10 @@ import ui.NATFrame;
 
 public class NAT {
     public static Translator translator = new Translator(); // 转换表
-    public static final String E0_IP = "10.0.0.100";
-    public static final String E1_IP = "128.10.10.1";
     public static final int port = 7452;
     public static final NATFrame frame = new NATFrame();
+    public static final String E0_IP = "10.0.0.100";
+    public static final String E1_IP = frame.getIP();
 
     public static void main(String[] args) {
         // 显示窗口

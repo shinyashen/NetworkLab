@@ -2,14 +2,29 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+
+import static java.lang.System.exit;
 
 public class ServerFrame extends Frame {
     public ServerFrame() {
         super();
     }
 
+    public String getIP() {
+        return textField1.getText();
+    }
+
+    public int getPort() {
+        return Integer.parseInt(textField2.getText());
+    }
+
     public void appendInfo(String info) {
         textArea1.append(info + "\n");
+    }
+
+    private void ServerExit(ActionEvent e) {
+        exit(0);
     }
 
     public void initComponents() {
@@ -63,6 +78,7 @@ public class ServerFrame extends Frame {
 
         //---- button2 ----
         button2.setText("\u5173\u95ed");
+        button2.addActionListener(e -> ServerExit(e));
         contentPane.add(button2);
         button2.setBounds(355, 60, 90, button2.getPreferredSize().height);
 

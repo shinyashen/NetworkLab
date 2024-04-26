@@ -9,7 +9,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.Vector;
+
+import static java.lang.System.exit;
 
 public class NATFrame extends Frame {
     public NATFrame() {
@@ -25,18 +28,13 @@ public class NATFrame extends Frame {
         if (table.size() > 0) {
             for (Entry e : table) {
                 String[] arr = new String[6];
-                if (e.protocol == 0)
-                    arr[0] = "TCP";
-                else
-                    arr[0] = "UDP";
+                arr[0] = (e.protocol == 0) ? "TCP" : "UDP";
                 arr[1] = e.src_ip;
                 arr[2] = e.src_port + "";
                 arr[3] = e.dst_ip;
                 arr[4] = e.dst_port + "";
                 int time = (int) ((Scanner.liveMilliSeconds - System.currentTimeMillis() + e.liveTime) / 1000);
-                int minute = time / 60;
-                int second = time % 60;
-                arr[5] = minute + "分" + second + "秒";
+                arr[5] = time / 60 + "分" + time % 60 + "秒";
                 tableModel.addRow(arr);
             }
         }
@@ -52,8 +50,12 @@ public class NATFrame extends Frame {
         tc.setMinWidth(width);
     }
 
-    private void createUIComponents() {
-        // TODO: add custom component creation code here
+    public String getIP() {
+        return textField1.getText();
+    }
+
+    private void NATExit(ActionEvent e) {
+        exit(0);
     }
 
     public void initComponents() {
@@ -68,7 +70,7 @@ public class NATFrame extends Frame {
         table1 = new JTable();
         table1.getTableHeader().setReorderingAllowed(false);
         DefaultTableModel tableModel = (DefaultTableModel) table1.getModel();
-        String[] column={"协议","内网IP","内网端口","公网IP","公网端口","剩余时间"};
+        String column[]={"协议","内网IP","内网端口","公网IP","公网端口","剩余时间"};
         for(String str:column)
             tableModel.addColumn(str);
         setFixedColumnWidth(table1, "协议", 70);
@@ -90,6 +92,9 @@ public class NATFrame extends Frame {
         label1.setText("IP\u5730\u5740");
         contentPane.add(label1);
         label1.setBounds(new Rectangle(new Point(25, 25), label1.getPreferredSize()));
+
+        //---- textField1 ----
+        textField1.setText("128.10.10.1");
         contentPane.add(textField1);
         textField1.setBounds(70, 25, 100, textField1.getPreferredSize().height);
 
@@ -97,6 +102,9 @@ public class NATFrame extends Frame {
         label2.setText("\u7aef\u53e3\u53f7");
         contentPane.add(label2);
         label2.setBounds(new Rectangle(new Point(185, 25), label2.getPreferredSize()));
+
+        //---- textField2 ----
+        textField2.setText("10000");
         contentPane.add(textField2);
         textField2.setBounds(235, 25, 100, textField2.getPreferredSize().height);
 
@@ -107,6 +115,7 @@ public class NATFrame extends Frame {
 
         //---- button2 ----
         button2.setText("\u5173\u95ed");
+        button2.addActionListener(e -> NATExit(e));
         contentPane.add(button2);
         button2.setBounds(465, 20, 90, button2.getPreferredSize().height);
 

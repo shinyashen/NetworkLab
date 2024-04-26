@@ -70,4 +70,15 @@ public class Message implements Serializable {
     public int getType() {
         return type;
     }
+
+    public String fromWhere() {
+        if (src_ip.equals("10.0.0.1")) {
+            return "A";
+        } else if (src_ip.equals("10.0.0.2")) {
+            return "B";
+        } else if (src_ip.equals("10.0.0.3")) {
+            return "C";
+        } else
+            return "";
+    }
 }
