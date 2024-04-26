@@ -13,7 +13,7 @@ public class Scanner implements Runnable {
                 if (!NAT.table.table.isEmpty())
                     NAT.table.table.stream().filter(e -> System.currentTimeMillis() - e.liveTime >= 2 * 60 * 1000).forEach(e -> NAT.table.delEntry(e));
                 frame.updateTable();
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

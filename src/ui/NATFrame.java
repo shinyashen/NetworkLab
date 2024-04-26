@@ -17,6 +17,8 @@ public class NATFrame extends Frame {
 
     public void updateTable() {
         Vector<Entry> table = NAT.table.table;
+        DefaultTableModel tableModel = (DefaultTableModel) table1.getModel();
+        tableModel.getDataVector().clear();
         for (Entry e : table) {
             String arr[] = new String[6];
             if (e.protocol == 0)
@@ -27,7 +29,8 @@ public class NATFrame extends Frame {
             arr[2] = e.src_port + "";
             arr[3] = e.dst_ip;
             arr[4] = e.dst_port + "";
-            arr[5] = (System.currentTimeMillis() - e.liveTime) + "";
+            arr[5] = 120 - (System.currentTimeMillis() - e.liveTime) / 1000 + "s";
+            tableModel.addRow(arr);
         }
     }
 
