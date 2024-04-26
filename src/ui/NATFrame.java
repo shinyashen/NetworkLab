@@ -2,6 +2,7 @@ package ui;
 
 import entity.Entry;
 import entity.NAT;
+import impl.Scanner;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -29,7 +30,7 @@ public class NATFrame extends Frame {
             arr[2] = e.src_port + "";
             arr[3] = e.dst_ip;
             arr[4] = e.dst_port + "";
-            arr[5] = 120 - (System.currentTimeMillis() - e.liveTime) / 1000 + "s";
+            arr[5] = Scanner.liveSeconds - (System.currentTimeMillis() - e.liveTime) / 1000 + "s";
             tableModel.addRow(arr);
         }
     }
