@@ -8,10 +8,10 @@ public class Scanner implements Runnable {
 
     @Override
     public void run() {
-        while(true) {
+        while (true) {
             try {
                 if (!NAT.table.table.isEmpty())
-                    NAT.table.table.stream().filter(e -> e.liveTime - System.currentTimeMillis() >= 2 * 60 * 1000).forEach(e -> NAT.table.delEntry(e));
+                    NAT.table.table.stream().filter(e -> System.currentTimeMillis() - e.liveTime >= 2 * 60 * 1000).forEach(e -> NAT.table.delEntry(e));
                 frame.updateTable();
                 Thread.sleep(1000);
             } catch (InterruptedException e) {

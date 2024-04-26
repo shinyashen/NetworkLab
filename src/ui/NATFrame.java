@@ -2,6 +2,7 @@ package ui;
 
 import entity.Entry;
 import entity.NAT;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -15,10 +16,19 @@ public class NATFrame extends Frame {
     }
 
     public void updateTable() {
-        Vector<Entry> table=NAT.table.table;
-//        for(Entry e:table) {
-//
-//        }
+        Vector<Entry> table = NAT.table.table;
+        for (Entry e : table) {
+            String arr[] = new String[6];
+            if (e.protocol == 0)
+                arr[0] = "TCP";
+            else
+                arr[0] = "UDP";
+            arr[1] = e.src_ip;
+            arr[2] = e.src_port + "";
+            arr[3] = e.dst_ip;
+            arr[4] = e.dst_port + "";
+            arr[5] = (System.currentTimeMillis() - e.liveTime) + "";
+        }
     }
 
     public void setFixedColumnWidth(JTable table, String columnName, int width) {
