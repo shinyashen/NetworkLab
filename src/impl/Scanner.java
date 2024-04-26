@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class Scanner implements Runnable {
     public static final NATFrame frame = NAT.frame;
-    public static long liveMilliSeconds = 10 * 1000;
+    public static long liveMilliSeconds = 120 * 1000;
 
     @Override
     public void run() {
@@ -20,7 +20,7 @@ public class Scanner implements Runnable {
                             collect(Collectors.toCollection(Vector::new)));
                 frame.updateTable();
                 //System.out.println(NAT.translator.table.size());
-                Thread.sleep(1000);
+                Thread.sleep(200);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

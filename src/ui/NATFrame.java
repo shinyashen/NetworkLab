@@ -20,19 +20,25 @@ public class NATFrame extends Frame {
         Vector<Entry> table = NAT.translator.table;
         DefaultTableModel tableModel = (DefaultTableModel) table1.getModel();
         tableModel.getDataVector().removeAllElements();
+        tableModel.fireTableDataChanged();
 
-        for (Entry e : table) {
-            String[] arr = new String[6];
-            if (e.protocol == 0)
-                arr[0] = "TCP";
-            else
-                arr[0] = "UDP";
-            arr[1] = e.src_ip;
-            arr[2] = e.src_port + "";
-            arr[3] = e.dst_ip;
-            arr[4] = e.dst_port + "";
-            arr[5] = (Scanner.liveMilliSeconds - System.currentTimeMillis() + e.liveTime) / 1000 + "s";
-            tableModel.addRow(arr);
+        if (table.size() > 0) {
+            for (Entry e : table) {
+                String[] arr = new String[6];
+                if (e.protocol == 0)
+                    arr[0] = "TCP";
+                else
+                    arr[0] = "UDP";
+                arr[1] = e.src_ip;
+                arr[2] = e.src_port + "";
+                arr[3] = e.dst_ip;
+                arr[4] = e.dst_port + "";
+                int time = (int) ((Scanner.liveMilliSeconds - System.currentTimeMillis() + e.liveTime) / 1000);
+                int minute = time / 60;
+                int second = time % 60;
+                arr[5] = minute + "分" + second + "秒";
+                tableModel.addRow(arr);
+            }
         }
     }
 
