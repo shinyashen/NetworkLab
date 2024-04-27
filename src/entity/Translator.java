@@ -1,19 +1,29 @@
 package entity;
 
 import java.net.Socket;
+import java.util.Arrays;
 import java.util.Vector;
 
 public class Translator {
     public Vector<Entry> table = new Vector<>();
-    int portNum = 0;
+    public static Boolean[] occupiedPortList = new Boolean[53536];
+
+    public Translator() {
+        Arrays.fill(occupiedPortList, false);
+    }
 
     public Entry searchRequest(String src_ip, int protocol, Socket socket) {
         Entry entry = table.stream().filter(e -> e.src_ip.equals(src_ip)).filter(e -> e.src_port == Client.port).filter(e -> e.protocol == protocol).findFirst().orElse(null);
 
         if (entry == null) {
-            entry = new Entry(protocol, src_ip, Client.port, NAT.E1_IP, 12000 + portNum, System.currentTimeMillis(), socket);
-            portNum++;
-            table.add(entry);
+            for (int i = 0; i < occupiedPortList.length; i++) {
+                if (!occupiedPortList[i]) {
+                    entry = new Entry(protocol, src_ip, Client.port, NAT.E1_IP, 12000 + i, System.currentTimeMillis(), socket);
+                    table.add(entry);
+                    occupiedPortList[i] = true;
+                    break;
+                }
+            }
         } else {
             entry.liveTime = System.currentTimeMillis();
             entry.socket = socket;
