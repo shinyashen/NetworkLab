@@ -14,7 +14,9 @@ public class NAT {
     public static void main(String[] args) {
         // 显示窗口
         frame.showWindow(100, 500);
+    }
 
+    public static void startListening() {
         // 创建监听线程
         Thread listener = new Thread(new NATListener(port));
         listener.start();

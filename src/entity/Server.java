@@ -12,7 +12,9 @@ public class Server {
     public static void main(String[] args) {
         // 显示窗口
         frame.showWindow(700, 500);
+    }
 
+    public static void startListening() {
         // 创建监听线程
         Thread listening = new Thread(new ServerListener(realPort));
         listening.start();

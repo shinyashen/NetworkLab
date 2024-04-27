@@ -10,7 +10,9 @@ public class Switcher {
     public static void main(String[] args) {
         // 显示窗口
         frame.showWindow(700, 100);
-
+    }
+    
+    public static void startListening() {
         // 创建监听线程
         Thread listener = new Thread(new SwitcherListener(port));
         listener.start();

@@ -13,25 +13,25 @@ public class Start {
         // 全局设置窗口字体
         initGlobalFontSetting(new Font("微软雅黑", Font.PLAIN, 12));
 
-        // 服务器
-        Server.main(args);
+        // 客户端窗口
+        Client.main(args);
 
-        // NAT
-        NAT.main(args);
-
-        // 交换机
+        // 交换机窗口
         Switcher.main(args);
 
-        // 客户端
-        Client.main(args);
+        // NAT窗口
+        NAT.main(args);
+
+        // 服务器窗口
+        Server.main(args);
     }
 
-    public static void initGlobalFontSetting(Font fnt){
+    public static void initGlobalFontSetting(Font fnt) {
         FontUIResource fontRes = new FontUIResource(fnt);
-        for(Enumeration keys = UIManager.getDefaults().keys(); keys.hasMoreElements();){
+        for (Enumeration<Object> keys = UIManager.getDefaults().keys(); keys.hasMoreElements(); ) {
             Object key = keys.nextElement();
             Object value = UIManager.get(key);
-            if(value instanceof FontUIResource)
+            if (value instanceof FontUIResource)
                 UIManager.put(key, fontRes);
         }
     }

@@ -10,6 +10,10 @@ import static entity.Client.sendData;
 import static java.lang.System.exit;
 
 public class ClientFrame extends Frame {
+    public static Boolean SwitcherStarted = false;
+    public static Boolean NATStarted = false;
+    public static Boolean ServerStarted = false;
+
     public ClientFrame() {
         super();
     }
@@ -31,10 +35,23 @@ public class ClientFrame extends Frame {
     }
 
     private void ClientSend(ActionEvent e) {
-        sendData(textField1.getText());
+        if (!SwitcherStarted || !NATStarted || !ServerStarted) {
+            appendInfo("客户端发送失败！原因如下：");
+            if (!SwitcherStarted) {
+                appendInfo("交换机未开始工作！");
+            }
+            if (!NATStarted) {
+                appendInfo("NAT未开始工作！");
+            }
+            if (!ServerStarted) {
+                appendInfo("服务器未开始工作！");
+            }
+        } else {
+            sendData(textField1.getText());
+        }
     }
 
-    private void ClientExit(ActionEvent e) {
+    public void frameExit(ActionEvent e) {
         exit(0);
     }
 
@@ -123,7 +140,7 @@ public class ClientFrame extends Frame {
 
         //---- button2 ----
         button2.setText("\u5173\u95ed");
-        button2.addActionListener(e -> ClientExit(e));
+        button2.addActionListener(e -> frameExit(e));
         contentPane.add(button2);
         button2.setBounds(375, 60, 90, button2.getPreferredSize().height);
 

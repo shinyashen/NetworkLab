@@ -72,13 +72,11 @@ public class Message implements Serializable {
     }
 
     public String fromWhere() {
-        if (src_ip.equals("10.0.0.1")) {
-            return "A";
-        } else if (src_ip.equals("10.0.0.2")) {
-            return "B";
-        } else if (src_ip.equals("10.0.0.3")) {
-            return "C";
-        } else
-            return "";
+        return switch (src_ip) {
+            case "10.0.0.1" -> "A";
+            case "10.0.0.2" -> "B";
+            case "10.0.0.3" -> "C";
+            default -> "";
+        };
     }
 }

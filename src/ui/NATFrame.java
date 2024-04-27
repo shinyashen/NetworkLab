@@ -25,7 +25,7 @@ public class NATFrame extends Frame {
         tableModel.getDataVector().removeAllElements();
         tableModel.fireTableDataChanged();
 
-        if (table.size() > 0) {
+        if (!table.isEmpty()) {
             for (Entry e : table) {
                 String[] arr = new String[6];
                 arr[0] = (e.protocol == 0) ? "TCP" : "UDP";
@@ -58,6 +58,16 @@ public class NATFrame extends Frame {
         exit(0);
     }
 
+    private void start(ActionEvent e) {
+        NAT.startListening();
+        ClientFrame.NATStarted = true;
+        appendInfo("NAT已开始工作！");
+    }
+
+    public void frameExit(ActionEvent e) {
+        exit(0);
+    }
+
     public void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         label1 = new JLabel();
@@ -70,7 +80,7 @@ public class NATFrame extends Frame {
         table1 = new JTable();
         table1.getTableHeader().setReorderingAllowed(false);
         DefaultTableModel tableModel = (DefaultTableModel) table1.getModel();
-        String column[]={"协议","内网IP","内网端口","公网IP","公网端口","剩余时间"};
+        String[] column={"协议","内网IP","内网端口","公网IP","公网端口","剩余时间"};
         for(String str:column)
             tableModel.addColumn(str);
         setFixedColumnWidth(table1, "协议", 70);
@@ -110,12 +120,13 @@ public class NATFrame extends Frame {
 
         //---- button1 ----
         button1.setText("\u5f00\u59cb\u5de5\u4f5c");
+        button1.addActionListener(e -> start(e));
         contentPane.add(button1);
         button1.setBounds(360, 20, 90, button1.getPreferredSize().height);
 
         //---- button2 ----
         button2.setText("\u5173\u95ed");
-        button2.addActionListener(e -> NATExit(e));
+        button2.addActionListener(e -> frameExit(e));
         contentPane.add(button2);
         button2.setBounds(465, 20, 90, button2.getPreferredSize().height);
 

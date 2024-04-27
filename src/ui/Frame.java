@@ -1,6 +1,7 @@
 package ui;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 public abstract class Frame extends JFrame {
     public Frame() {
@@ -19,4 +20,6 @@ public abstract class Frame extends JFrame {
     public abstract void appendInfo(String info);
 
     public abstract void initComponents();
+
+    public abstract void frameExit(ActionEvent e);
 }

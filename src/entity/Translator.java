@@ -29,13 +29,15 @@ public class Translator {
     public String fromWhere(String ip, int port, int protocol) {
         Entry entry = table.stream().filter(e -> e.dst_ip.equals(ip)).filter(e -> e.dst_port == port).filter(e -> e.protocol == protocol).findFirst().orElse(null);
 
-        if (entry.src_ip.equals("10.0.0.1")) {
-            return "A";
-        } else if (entry.src_ip.equals("10.0.0.2")) {
-            return "B";
-        } else if (entry.src_ip.equals("10.0.0.3")) {
-            return "C";
-        } else
+        if (entry != null) {
+            return switch (entry.src_ip) {
+                case "10.0.0.1" -> "A";
+                case "10.0.0.2" -> "B";
+                case "10.0.0.3" -> "C";
+                default -> "";
+            };
+        } else {
             return "";
+        }
     }
 }

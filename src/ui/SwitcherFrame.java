@@ -1,5 +1,7 @@
 package ui;
 
+import entity.Switcher;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,8 +17,14 @@ public class SwitcherFrame extends Frame {
         textArea1.append(info + "\n");
     }
 
-    private void SwitcherExit(ActionEvent e) {
+    public void frameExit(ActionEvent e) {
         exit(0);
+    }
+
+    private void start(ActionEvent e) {
+        Switcher.startListening();
+        ClientFrame.SwitcherStarted = true;
+        appendInfo("交换机已开始工作！");
     }
 
     public void initComponents() {
@@ -58,6 +66,7 @@ public class SwitcherFrame extends Frame {
 
         //---- button1 ----
         button1.setText("\u5f00\u59cb\u5de5\u4f5c");
+        button1.addActionListener(e -> start(e));
         contentPane.add(button1);
         button1.setBounds(355, 20, 90, button1.getPreferredSize().height);
 
@@ -70,7 +79,7 @@ public class SwitcherFrame extends Frame {
 
         //---- button2 ----
         button2.setText("\u5173\u95ed");
-        button2.addActionListener(e -> SwitcherExit(e));
+        button2.addActionListener(e -> frameExit(e));
         contentPane.add(button2);
         button2.setBounds(355, 60, 90, button2.getPreferredSize().height);
 
