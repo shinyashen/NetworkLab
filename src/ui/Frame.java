@@ -17,9 +17,12 @@ public abstract class Frame extends JFrame {
         });
     }
 
+    // 在各自窗口的信息框内输出信息
     public abstract void appendInfo(String info);
 
+    // 初始化窗口内容
     public abstract void initComponents();
 
+    // 窗口退出
     public abstract void frameExit(ActionEvent e);
 }

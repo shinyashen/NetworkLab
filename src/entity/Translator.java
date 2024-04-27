@@ -13,9 +13,10 @@ public class Translator {
     }
 
     public Entry searchRequest(String src_ip, int protocol, Socket socket) {
+        // 尝试寻找已创建的信息相同的entry
         Entry entry = table.stream().filter(e -> e.src_ip.equals(src_ip)).filter(e -> e.src_port == Client.port).filter(e -> e.protocol == protocol).findFirst().orElse(null);
 
-        if (entry == null) {
+        if (entry == null) { // 若未创建，从端口号12000开始自动递增寻找可用的端口
             for (int i = 0; i < occupiedPortList.length; i++) {
                 if (!occupiedPortList[i]) {
                     entry = new Entry(protocol, src_ip, Client.port, NAT.E1_IP, 12000 + i, System.currentTimeMillis(), socket);
@@ -24,7 +25,7 @@ public class Translator {
                     break;
                 }
             }
-        } else {
+        } else { // 若已创建，更新生成时间与socket
             entry.liveTime = System.currentTimeMillis();
             entry.socket = socket;
         }
@@ -36,7 +37,7 @@ public class Translator {
         return table.stream().filter(e -> e.dst_ip.equals(dst_ip)).filter(e -> e.dst_port == dst_port).filter(e -> e.protocol == protocol).findFirst().orElse(null);
     }
 
-    public String fromWhere(String ip, int port, int protocol) {
+    public String fromWhere(String ip, int port, int protocol) { // 匹配客户端编号
         Entry entry = table.stream().filter(e -> e.dst_ip.equals(ip)).filter(e -> e.dst_port == port).filter(e -> e.protocol == protocol).findFirst().orElse(null);
 
         if (entry != null) {

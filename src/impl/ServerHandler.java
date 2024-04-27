@@ -17,6 +17,7 @@ public class ServerHandler extends HandlerImpl {
     protected Message dataHandling(Message message) {
         Message serverMessage = new Message(1, message.getProtocol(), message.getSrcIp(), message.getDstIp(), message.getSrcPort(), message.getDstPort(), message.getLen(), ("收到：" + new String(message.getData())).getBytes());
 
+        // 返回应答分组报文
         frame.appendInfo("服务器收到：" + NAT.translator.fromWhere(message.getSrcIp(), message.getSrcPort(), message.getProtocol()) + "发送的请求分组");
         frame.appendInfo("服务器发送：" + new String(serverMessage.getData()));
         System.out.println("服务器发送：" + new String(serverMessage.getData()));

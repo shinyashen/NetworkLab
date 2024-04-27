@@ -15,14 +15,12 @@ public abstract class ListenerImpl implements Runnable {
 
     @Override
     public void run() {
-        try(ServerSocket serverSocket = new ServerSocket(port)) {
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
             serverSocket.setReuseAddress(true);
 
-            while(true) {
-                try {
+            while (true) {
+                try { // 创建处理线程
                     Socket clientSocket = serverSocket.accept();
-
-                    // 创建线程
                     startHandling(clientSocket);
                 } catch (IOException e) {
                     throw new RuntimeException(e);

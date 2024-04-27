@@ -71,7 +71,7 @@ public class Message implements Serializable {
         return type;
     }
 
-    public String fromWhere() {
+    public String fromWhere() { // 匹配客户端编号
         return switch (src_ip) {
             case "10.0.0.1" -> "A";
             case "10.0.0.2" -> "B";

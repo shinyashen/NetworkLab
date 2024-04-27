@@ -35,20 +35,17 @@ public class ClientFrame extends Frame {
     }
 
     private void ClientSend(ActionEvent e) {
+        // dirty: 检查交换机、NAT、服务器线程是否开启
         if (!SwitcherStarted || !NATStarted || !ServerStarted) {
             appendInfo("客户端发送失败！原因如下：");
-            if (!SwitcherStarted) {
+            if (!SwitcherStarted)
                 appendInfo("交换机未开始工作！");
-            }
-            if (!NATStarted) {
+            if (!NATStarted)
                 appendInfo("NAT未开始工作！");
-            }
-            if (!ServerStarted) {
+            if (!ServerStarted)
                 appendInfo("服务器未开始工作！");
-            }
-        } else {
+        } else
             sendData(textField1.getText());
-        }
     }
 
     public void frameExit(ActionEvent e) {

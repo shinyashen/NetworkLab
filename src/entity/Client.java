@@ -22,6 +22,7 @@ public class Client {
         port = frame.getPort();
         String testMessage = Objects.requireNonNull(frame.getData());
         byte[] data = testMessage.getBytes();
+
         Message message = new Message(0, protocol, dest_ip, src_ip, dest_port, port, data.length, data);
 
         // 向最近的网关发送报文

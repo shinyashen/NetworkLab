@@ -41,10 +41,12 @@ public class NATFrame extends Frame {
     }
 
     public void setFixedColumnWidth(JTable table, String columnName, int width) {
+        // 设置表格列项目固定宽度
         TableColumnModel tcm = table.getTableHeader().getColumnModel();
         DefaultTableModel tm = (DefaultTableModel) table.getModel();
         int column = tm.findColumn(columnName);
         TableColumn tc = tcm.getColumn(column);
+
         tc.setPreferredWidth(width);
         tc.setMaxWidth(width);
         tc.setMinWidth(width);
@@ -52,10 +54,6 @@ public class NATFrame extends Frame {
 
     public String getIP() {
         return textField1.getText();
-    }
-
-    private void NATExit(ActionEvent e) {
-        exit(0);
     }
 
     private void start(ActionEvent e) {

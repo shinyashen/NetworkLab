@@ -24,9 +24,7 @@ public class Sender {
 
             inputStream.close();
             outputStream.close();
-
             return destMessage;
-
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
