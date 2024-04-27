@@ -13,6 +13,10 @@ public class SwitcherFrame extends Frame {
         super();
     }
 
+    public String getIP() {
+        return textField1.getText();
+    }
+
     public void appendInfo(String info) {
         textArea1.append(info + "\n");
     }

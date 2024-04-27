@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class Scanner implements Runnable {
     public static final NATFrame frame = NAT.frame;
-    public static final long liveMilliSeconds = 10 * 1000;
+    public static final long liveMilliSeconds = 120 * 1000;
 
     @Override
     public void run() {

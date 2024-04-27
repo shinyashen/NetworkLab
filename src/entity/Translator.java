@@ -6,7 +6,7 @@ import java.util.Vector;
 
 public class Translator {
     public Vector<Entry> table = new Vector<>();
-    public static Boolean[] occupiedPortList = new Boolean[53536];
+    public static Boolean[] occupiedPortList = new Boolean[53536]; // 65536-12000
 
     public Translator() {
         Arrays.fill(occupiedPortList, false);
