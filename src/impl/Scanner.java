@@ -19,11 +19,10 @@ public class Scanner implements Runnable {
         while (true) {
             try {
                 if (!NAT.translator.table.isEmpty()) {
-                    Collection removeItems = NAT.translator.table.stream().filter(Objects::nonNull).filter(e -> System.currentTimeMillis() - e.liveTime >= liveMilliSeconds).collect(Collectors.toCollection(Vector::new));
+                    Collection<Entry> removeItems = NAT.translator.table.stream().filter(Objects::nonNull).filter(e -> System.currentTimeMillis() - e.liveTime >= liveMilliSeconds).collect(Collectors.toCollection(Vector::new));
                     if (!removeItems.isEmpty()) {
-                        for (Object e : removeItems) {
-                            Entry entry = (Entry) e;
-                            Translator.occupiedPortList[entry.dst_port - 12000] = false;
+                        for (Entry e : removeItems) {
+                            Translator.occupiedPortList[e.dst_port - 12000] = false;
                         }
                         NAT.translator.table.removeAll(removeItems);
                     }
